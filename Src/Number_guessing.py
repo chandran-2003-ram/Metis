@@ -189,7 +189,7 @@ class MainApp(tk.Tk):
     def Help(self):
         """ Open the help website of the game. """
         try:
-            urlopen("ssds.com", timeout= 1)    # TO check the internet connectivity.
+            urlopen("https://github.com/chandran-2003-ram/Metis/wiki/Number-guessing-Game#how-to-play-the-game", timeout= 1)    # TO check the internet connectivity.
             wb.open("https://github.com/chandran-2003-ram/Metis/wiki/Number-guessing-Game#how-to-play-the-game", new= 2)
         except URLError:
             msg_box.showwarning(message= "Check you're connected to a network", title= "Warning:Connectivity issue found")
