@@ -76,8 +76,9 @@ class MainApp(tk.Tk):
         self.guess_limit_label.place(x = 140, y = 110)
         self.remaining_chance_label.place(x = 280, y = 110)
         self.hint_label.place(x = 160, y = 150)
-        self.reset_bt.place(x = 210, y = 350)
-        self.quit_bt.place(x = 280, y = 350)
+        self.reset_bt.place(x = 210, y = 300)
+        self.quit_bt.place(x = 280, y = 300)
+        self.help_bt.place(x= 265, y= 350)
 
     def Range(self):
         """
