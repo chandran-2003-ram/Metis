@@ -1,0 +1,8 @@
+# ignoring try files
+*_try.py
+
+# ignore env files
+.env
+
+# ignore .vscode folder
+.vscode
