@@ -3,6 +3,10 @@
 
 import tkinter as tk
 import random as r
+import webbrowser as wb
+from tkinter import  messagebox as msg_box
+from urllib.request import urlopen
+from urllib.error import URLError
 
 __version__ = "v1.1.2"      # revised on 03-02-2022
 
@@ -35,6 +39,9 @@ class MainApp(tk.Tk):
         of available chances. If random number matches guess
         number send a "congrats" message until the available
         chances are left else send a "lost the game" message.
+
+    Help(self):
+        Open the help website of the game.
     """
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -67,6 +74,8 @@ class MainApp(tk.Tk):
         self.range_bt = tk.Button(self, text= "Range", font= ("arial", 14), bg= "#f01688", fg= "#00b7fa", command= lambda : self.Range())   # Range button
 
         self.quit_bt = tk.Button(self, text= "Quit", bg= "#ff2929",font =("arial",14),fg = "#00b7fa",command = quit)    # Quit button
+
+        self.help_bt = tk.Button(self, text= "Help", bg= "#ff2929",font =("arial",8),fg = "#00b7fa",command = lambda : self.Help())    # Help button
 
         # Alignment if widgets
         self.intro_label.place(x= 150, y = 30)
@@ -176,6 +185,16 @@ class MainApp(tk.Tk):
             self.guess_bt.configure(state= tk.DISABLED)
             self.input_box.configure(state= tk.DISABLED)
             self.input_box.delete(0, tk.END)
+
+    def Help(self):
+        """ Open the help website of the game. """
+        try:
+            urlopen("ssds.com", timeout= 1)    # TO check the internet connectivity.
+            wb.open("https://github.com/chandran-2003-ram/Metis/wiki/Number-guessing-Game#how-to-play-the-game", new= 2)
+        except URLError:
+            msg_box.showwarning(message= "Check you're connected to a network", title= "Warning:Connectivity issue found")
+        except ValueError:
+            msg_box.showwarning(message= "No Such website found", title= "Warning: Site not found")
 
 if __name__ == "__main__":
     app = MainApp()
