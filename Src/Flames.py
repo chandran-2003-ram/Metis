@@ -10,6 +10,30 @@ partner_1 = "Partner 1"
 partner_2 = "Partner 2"
 
 class FlamesApp(tk.Tk):
+    """
+    This is the main GUI for the app inherited from 'tk.Tk()' class
+
+    Methods:
+    --------
+
+    remove_match_char(self:object, list1:list, list2:list)->list:
+        Remove a common character and return a list with a list and a flag value.
+
+    flames(self:object, p1_list:list, p2_list:list)->None:
+        Finds the relationship status and display the status to the user.
+
+    reset(self:object)-> None:
+        Reset to the initial state of the game.
+
+    name(self:object)-> None:
+        Get the valid input strings(i.e. names) and call the flames method.
+
+    process(self:object)->None:
+        call a function based on reset status.
+
+    Help(self:object)->None:
+        Open the help website of the game.
+    """
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -46,6 +70,20 @@ class FlamesApp(tk.Tk):
 
 # Algorithm was copied from: https://www.geeksforgeeks.org/python-program-to-implement-simple-flames-game/
     def remove_match_char(self,list1, list2):
+        """
+        Remove a common character and return a list with a list and a flag value.
+
+        Parameters:
+        -----------
+        list1:(list)
+            A list containing characters of a name.
+        list2:(list)
+            A list containing characters of a name.
+
+        Return:
+        -------
+            A list with a nested list and a flag value(boolean).
+        """
 
         for i in range(len(list1)) :
             for j in range(len(list2)) :
@@ -62,6 +100,20 @@ class FlamesApp(tk.Tk):
         return [list3, False]
 
     def flames(self, p1_list, p2_list):
+        """
+        Finds the relationship status and display the status to the user.
+
+        Parameters:
+        -----------
+        p1_list:(list)
+            A list containing characters of a name.
+        p2_list:(list)
+            A list containing characters of a name.
+
+        Return:
+        -------
+            None
+        """
 
         proceed = True        
         while proceed :
@@ -93,7 +145,20 @@ class FlamesApp(tk.Tk):
         self.relation_label.configure(text= f"You're relationship status: {result[0]}")
 
     def reset(self)-> None:
-        """ Reset to the initial state of the game. """
+        """
+        Reset to the initial state of the game.
+
+        Parameters:
+        -----------
+
+        self:object
+            An object of class FlamesApp()
+
+        Returns:
+        --------
+            None
+        """
+
         self.input_box.configure(state= tk.NORMAL)
         self.process_bt.configure(text= "Enter")
         self.partner_label.configure(text= partner_1)
@@ -103,6 +168,19 @@ class FlamesApp(tk.Tk):
         
 
     def name(self)-> None:
+        """
+        Get the valid input strings(i.e. names) and call the flames method.
+
+        Parameters:
+        -----------
+
+        self:object
+            An object of class FlamesApp()
+
+        Returns:
+        --------
+            None
+        """
 
         try:
             name = str(self.input_box.get()).replace(" ", "").lower()
@@ -122,7 +200,19 @@ class FlamesApp(tk.Tk):
             msg_box.showwarning(title= "Warning: Invalid input", message= "1.Use only aplphabets\n2. Avoid special characters like fullstop('.')\n2. Don't leave blank")
 
     def process(self):
-        """ call a function based on reset status """
+        """
+        Call a function based on reset status.
+
+        Parameters:
+        -----------
+
+        self:object
+            An object of class FlamesApp()
+
+        Returns:
+        --------
+            None
+        """
 
         if self.reset_status == False:
             self.name()
@@ -130,7 +220,20 @@ class FlamesApp(tk.Tk):
             self.reset()
     
     def Help(self):
-        """ Open the help website of the game. """
+        """
+        Open the help website of the game.
+
+        Parameters:
+        -----------
+
+        self:object
+            An object of class FlamesApp()
+
+        Returns:
+        --------
+            None
+        """
+
         try:
             urlopen(wiki_link, timeout= 1)    # TO check the internet connectivity.
             wb.open(wiki_link, new= 2)
